@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Sun Dec 20 16:21:10 2015 marc brout
+** Last update Mon Dec 21 12:19:51 2015 marc brout
 */
 
 #ifndef WOLF_H_
@@ -41,29 +41,16 @@ typedef struct		s_lvl
 
 typedef struct		s_wmath
 {
-  double		roots[WIDTH / 2 + 1];
-  double		ang[WIDTH / 2 + 1];
   double		costab[360];
   double		sintab[360];
-  double		tantab[360];
 }			t_wmath;
 
 typedef struct		s_calc
 {
-  char			up;
-  char			left;
   double		d;
   double		p;
   double		k;
   double		ang;
-  double		x_xa;
-  double		x_ya;
-  double		y_xa;
-  double		y_ya;
-  double		x_x;
-  double		x_y;
-  double		y_x;
-  double		y_y;
   double		vecx;
   double		vecy;
   double		xf;
@@ -89,8 +76,7 @@ double vecnorm(t_bunny_position *, t_bunny_position *);
 void set_cossin(t_param *);
 void sky(t_param *);
 void bottom(t_param *);
-void basic_calc(t_param *, int);
-void basic_to_sec(t_param *);
+void basic_to_sec(t_param *, int);
 void check_angle(t_param *);
 void calc_walls(t_param *);
 void first_x_intersection(t_param *);

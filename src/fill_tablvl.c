@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Sun Dec 20 00:58:36 2015 marc brout
+** Last update Mon Dec 21 12:09:29 2015 marc brout
 */
 
 #include "wolf.h"
@@ -29,6 +29,8 @@ void		get_player(t_param *arg, t_lvl *lvl)
 	    }
 	}
     }
+  lvl->playerx += 0.5;
+  lvl->playery += 0.5;
 }
 
 char		get_lvl_map(t_param *arg, t_lvl *lvl)

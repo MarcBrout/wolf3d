@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Sun Dec 20 16:24:11 2015 marc brout
+** Last update Mon Dec 21 12:14:52 2015 marc brout
 */
 
 #include "wolf.h"
@@ -23,14 +23,14 @@ t_bunny_response	my_keys(t_bunny_event_state state,
     }
   if (keysym == BKS_RIGHT && state == GO_DOWN)
     {
-      arg->lvl[arg->curlvl].plangle += -1;
+      arg->lvl[arg->curlvl].plangle += -3;
       if (arg->lvl[arg->curlvl].plangle <= 0)
 	arg->lvl[arg->curlvl].plangle = 359;
       return (GO_ON);
     }
   if (keysym == BKS_LEFT && state == GO_DOWN)
     {
-      arg->lvl[arg->curlvl].plangle += 1;
+      arg->lvl[arg->curlvl].plangle += 3;
       if (arg->lvl[arg->curlvl].plangle >= 360)
 	arg->lvl[arg->curlvl].plangle = 0;
       return (GO_ON);

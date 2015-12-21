@@ -5,23 +5,10 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Sun Dec 20 03:03:51 2015 marc brout
+** Last update Mon Dec 21 12:17:09 2015 marc brout
 */
 
 #include "wolf.h"
-
-void		set_angtab(t_param *arg)
-{
-  int		i;
-
-  i = -1;
-  while (++i < ((WIDTH / 2) + 1))
-    {
-      arg->wm.ang[i] = DEGRE(acos(arg->wm.roots[0] / arg->wm.roots[i]));
-      printf("%d : arg->wm.roots = %f :: arg->wm.ang = %f\n",
-	     i, arg->wm.roots[i],  arg->wm.ang[i]);
-    }
-}
 
 void		set_cossin(t_param *arg)
 {
@@ -32,23 +19,12 @@ void		set_cossin(t_param *arg)
     {
       arg->wm.costab[i] = cos((double)RAD(i));
       arg->wm.sintab[i] = sin((double)RAD(i));
-      
-      arg->wm.tantab[i] = (i == 90 || i == 270) ? 1 :
-	arg->wm.sintab[i] / arg->wm.costab[i];
-
     }
   i = -1;
   while (++i < 360)
     {
       printf("cos [%d°] = %f ||", i, arg->wm.costab[i]);       
-      printf("sin [%d°] = %f ||", i, arg->wm.sintab[i]); 
-      printf("tan [%d°] = %f\n", i, arg->wm.tantab[i]); 
-    }
-  i = -1;
-  while (++i < ((WIDTH / 2) + 1))
-    {
-      arg->wm.roots[i] = (sqrt(pow((double)(WIDTH / 2), 2) +
-			       pow((double)i, 2)) / WIDTH);
+      printf("sin [%d°] = %f\n", i, arg->wm.sintab[i]); 
     }
 }
 
@@ -64,9 +40,8 @@ char		launch_wolf(char **av)
   if (get_tabmap(&arg))
     return (1);
   arg.calc.p = 1;
-  arg.calc.d = arg.calc.p / 2;
+  arg.calc.d = 0.7;
   set_cossin(&arg);
-  set_angtab(&arg);
   if (aff_wolf(&arg))
     return (1);
   i = -1;
