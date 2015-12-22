@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Mon Dec 21 12:09:29 2015 marc brout
+** Last update Mon Dec 21 20:40:20 2015 marc brout
 */
 
 #include "wolf.h"
@@ -76,9 +76,11 @@ char		mal_lvl_map(t_param *arg, t_lvl *lvl)
 {
   int		i;
 
-  if ((lvl->height = my_getnbr(FLD(arg->ini, lvl->name, "height", 0))) < 3 ||
-      (lvl->width = my_getnbr(FLD(arg->ini, lvl->name, "width", 0))) < 3)
+  if ((lvl->height = my_getnbr(FLD(arg->ini, lvl->name, "height", 0))) < 3
+      || (lvl->width = my_getnbr(FLD(arg->ini, lvl->name, "width", 0))) < 3)
     return (1);
+  if (mal_mini_map(lvl))
+    return (2);
   if ((lvl->map = malloc(sizeof(int *) * (lvl->height + 1))) == NULL)
     return (3);
   i = -1;

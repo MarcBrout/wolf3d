@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Sun Dec 20 00:28:17 2015 marc brout
+## Last update Tue Dec 22 02:53:20 2015 marc brout
 ##
 
 SRCP	= ./src/
@@ -16,8 +16,9 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)check_file.c \
 	$(SRCP)fill_tablvl.c \
 	$(SRCP)aff_wolf.c \
+	$(SRCP)mini_map.c \
+	$(SRCP)mini_map_blit.c \
 	$(SRCP)calc.c \
-	$(SRCP)intersections.c \
 	$(SRCP)my_getnbr.c \
 	$(SRCP)my_strdup.c \
 	$(SRCP)my_strlen.c \
@@ -31,9 +32,9 @@ NAME    = wolf3d
 
 CC      = gcc -g
 
-CFLAGS  = -W -Wall -Werror -ansi -pedantic -I./include/
+CFLAGS  = -W -Wall -Werror -ansi -pedantic -I/home/${USER}/.froot/include -I./include
 
-LDFLAGS = -L/usr/local/lib \
+LDFLAGS = -L/home/${USER}/.froot/lib \
 	-llapin \
 	-lsfml-audio \
 	-lsfml-graphics \
