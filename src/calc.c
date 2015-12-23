@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Tue Dec 22 01:11:09 2015 marc brout
+** Last update Tue Dec 22 18:44:05 2015 marc brout
 */
 
 #include "wolf.h"
@@ -32,10 +32,15 @@ void		get_len(t_param *arg)
   while (!arg->lvl[arg->curlvl].map[(int)arg->calc.yf][(int)arg->calc.xf])
     {
       arg->calc.k += 0.005;
-      arg->calc.xf = arg->lvl[arg->curlvl].playerx +
-	arg->calc.vecx * arg->calc.k;
-      arg->calc.yf = arg->lvl[arg->curlvl].playery +
-	arg->calc.vecy * arg->calc.k;
+      arg->calc.xf = arg->lvl[arg->curlvl].playerx + arg->calc.vecx *
+	arg->calc.k;
+      arg->calc.yf = arg->lvl[arg->curlvl].playery + arg->calc.vecy *
+	arg->calc.k;
+      if ((int)arg->calc.xf < 0 ||
+	  (int)arg->calc.xf >= arg->lvl[arg->curlvl].width ||
+	  (int)arg->calc.yf < 0 ||
+	  (int)arg->calc.yf >= arg->lvl[arg->curlvl].height)
+	return ;
     }
 }
 

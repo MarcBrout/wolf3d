@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Dec 22 02:53:20 2015 marc brout
+## Last update Tue Dec 22 20:05:49 2015 marc brout
 ##
 
 SRCP	= ./src/
@@ -16,6 +16,8 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)check_file.c \
 	$(SRCP)fill_tablvl.c \
 	$(SRCP)aff_wolf.c \
+	$(SRCP)free_all.c \
+	$(SRCP)keyboard.c \
 	$(SRCP)mini_map.c \
 	$(SRCP)mini_map_blit.c \
 	$(SRCP)calc.c \
@@ -47,7 +49,7 @@ LDFLAGS = -L/home/${USER}/.froot/lib \
 RM      = rm -f
 
 .c.o:
-	@$(CC) -c $< -o $@ $(CFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(NAME): $(OBJS)
 	@$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Mon Dec 21 16:32:47 2015 marc brout
-** Last update Tue Dec 22 01:07:44 2015 marc brout
+** Last update Tue Dec 22 19:50:38 2015 marc brout
 */
 
 #include "wolf.h"
@@ -46,15 +46,15 @@ void		tek_circle(t_lvl *lvl, int x)
   t_color	*pixels;
 
   pixels = lvl->mini->pixels;
-  pixels[x].full = PINK;
-  pixels[x - 1].full = PINK;
-  pixels[x + 1].full = PINK;
-  pixels[x + lvl->mini->clipable.clip_width].full = PINK;
-  pixels[x - lvl->mini->clipable.clip_width].full = PINK;
-  pixels[x + 1 - lvl->mini->clipable.clip_width].full = PINK;
-  pixels[x + 1 + lvl->mini->clipable.clip_width].full = PINK;
-  pixels[x - 1 + lvl->mini->clipable.clip_width].full = PINK;
-  pixels[x - 1 - lvl->mini->clipable.clip_width].full = PINK;
+  pixels[x].full = PLAYER;
+  pixels[x - 1].full = PLAYER;
+  pixels[x + 1].full = PLAYER;
+  pixels[x + lvl->mini->clipable.clip_width].full = PLAYER;
+  pixels[x - lvl->mini->clipable.clip_width].full = PLAYER;
+  pixels[x + 1 - lvl->mini->clipable.clip_width].full = PLAYER;
+  pixels[x + 1 + lvl->mini->clipable.clip_width].full = PLAYER;
+  pixels[x - 1 + lvl->mini->clipable.clip_width].full = PLAYER;
+  pixels[x - 1 - lvl->mini->clipable.clip_width].full = PLAYER;
 }
 
 void		add_player_to_mini(t_lvl *lvl)

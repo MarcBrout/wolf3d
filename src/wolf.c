@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Tue Dec 22 01:29:05 2015 marc brout
+** Last update Tue Dec 22 20:22:59 2015 marc brout
 */
 
 #include "wolf.h"
@@ -31,17 +31,18 @@ char		launch_wolf(char **av)
   if (get_tabmap(&arg))
     return (1);
   arg.calc.p = 1;
-  arg.calc.d = 0.7;
+  arg.calc.d = 0.5;
   set_cossin(&arg);
   if (aff_wolf(&arg))
     return (1);
+  bunny_delete_ini(arg.ini);
+  free_all(&arg);
   return (0);
 }
 
 int		main(int ac, char **av, char **env)
 {
-  if (check_args(ac, env))
+  if (check_args(ac, env) || launch_wolf(av))
     return (1);
-  launch_wolf(av);
   return (0);
 }

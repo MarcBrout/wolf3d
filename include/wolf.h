@@ -5,15 +5,16 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Dec 22 18:18:14 2015 marc brout
+** Last update Tue Dec 22 20:19:15 2015 marc brout
 */
 
 #ifndef WOLF_H_
 # define WOLF_H_
 # define WIDTH 1024
 # define HEIGHT 768
-# define FLOOR 0xFF2222B2
 # define MINI (HEIGHT / 50)
+# define FLOOR 0xFF2222B2
+# define PLAYER 0xFF00D7FF
 # define WALL 0xFFADDEFF
 # define WALLGREY 0xFF8CB4DE
 # define SKY 0xFFDCF8FF
@@ -63,26 +64,30 @@ typedef struct		s_calc
   double		yf;
 }			t_calc;
 
-typedef struct			s_param
+typedef struct		s_param
 {
-  t_calc			calc;
-  t_wmath			wm;
-  int				curlvl;
-  int				nblvl;
-  t_lvl				*lvl;
-  t_bunny_ini			*ini;
-  t_bunny_pixelarray		*pix;
-  t_bunny_window		*win;
-  t_bunny_key			key;
-  t_bunny_move			move;
-  char				mov;
-  int				margl;
-  int				margr;
-}				t_param;
+  t_calc		calc;
+  t_wmath		wm;
+  int			curlvl;
+  int			nblvl;
+  t_lvl			*lvl;
+  t_bunny_ini		*ini;
+  t_bunny_pixelarray	*pix;
+  t_bunny_window	*win;
+  t_bunny_key		key;
+  t_bunny_move		move;
+  char			mov;
+}			t_param;
 
+t_bunny_response my_mouse(const t_bunny_position *, void *);
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
 t_bunny_response main_wolf(void *);
 double vecnorm(t_bunny_position *, t_bunny_position *);
+void free_all(t_param *);
+void double_tap(t_param *, const bool *);
+void simple_tap(t_param *, const bool *);
+void move_fw(t_param *, double, double);
+void move_bw(t_param *, double, double);
 void mini_map(t_param *, t_lvl *);
 void set_cossin(t_param *);
 void sky(t_param *);
