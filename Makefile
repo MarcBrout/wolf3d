@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Dec 22 20:05:49 2015 marc brout
+## Last update Fri Dec 25 01:49:47 2015 marc brout
 ##
 
 SRCP	= ./src/
@@ -17,6 +17,7 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)fill_tablvl.c \
 	$(SRCP)aff_wolf.c \
 	$(SRCP)free_all.c \
+	$(SRCP)wall.c \
 	$(SRCP)keyboard.c \
 	$(SRCP)mini_map.c \
 	$(SRCP)mini_map_blit.c \
@@ -32,7 +33,7 @@ OBJS    = $(SRC:.c=.o)
 
 NAME    = wolf3d
 
-CC      = gcc -g
+CC      = gcc
 
 CFLAGS  = -W -Wall -Werror -ansi -pedantic -I/home/${USER}/.froot/include -I./include
 

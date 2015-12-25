@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Mon Dec 21 20:40:20 2015 marc brout
+** Last update Fri Dec 25 02:01:46 2015 marc brout
 */
 
 #include "wolf.h"
@@ -17,8 +17,11 @@ void		get_player(t_param *arg, t_lvl *lvl)
   lvl->playery = my_getnbr(FLD(arg->ini, lvl->name, "start_position", 1));
   lvl->plangle = (my_getnbr(FLD(arg->ini, lvl->name, "start_position", 2))
 		  % 360);
-  if (!lvl->playerx || !lvl->playery)
+  if (!lvl->playerx || !lvl->playery || lvl->playerx >= lvl->width || 
+      lvl->playery >= lvl->height)
     {
+      lvl->playerx = 0;
+      lvl->playery = 0;
       while (lvl->map[(int)lvl->playery][(int)lvl->playerx])
 	{
 	  lvl->playerx += 1;
@@ -29,6 +32,7 @@ void		get_player(t_param *arg, t_lvl *lvl)
 	    }
 	}
     }
+  lvl->yangle = 0;
   lvl->playerx += 0.5;
   lvl->playery += 0.5;
 }
@@ -38,17 +42,20 @@ char		get_lvl_map(t_param *arg, t_lvl *lvl)
   int		x;
   int		y;
   int		ind;
+  const char	*nb;
   char		pres;
 
   y = -1;
   pres = 0;
-  while (++y < lvl->width)
+  while (++y < lvl->height)
     {
       x = -1;
       while (++x < lvl->width)
 	{
 	  ind = x + (lvl->height - 1 - y) * lvl->width;
-	  lvl->map[y][x] = my_getnbr(FLD(arg->ini, lvl->name, "data", ind));
+	  if ((nb = FLD(arg->ini, lvl->name, "data", ind)) == NULL)
+	    return (1);
+	  lvl->map[y][x] = my_getnbr(nb);
 	  if (!lvl->map[y][x])
 	    pres = 1;
 	}
@@ -79,13 +86,14 @@ char		mal_lvl_map(t_param *arg, t_lvl *lvl)
   if ((lvl->height = my_getnbr(FLD(arg->ini, lvl->name, "height", 0))) < 3
       || (lvl->width = my_getnbr(FLD(arg->ini, lvl->name, "width", 0))) < 3)
     return (1);
-  if (mal_mini_map(lvl))
+  if (mal_mini_map(arg, lvl))
     return (2);
-  if ((lvl->map = malloc(sizeof(int *) * (lvl->height + 1))) == NULL)
+  if ((lvl->map = bunny_malloc(sizeof(int *) * (lvl->height + 1))) == NULL)
     return (3);
   i = -1;
   while (++i < lvl->height)
-    if ((lvl->map[i] = malloc(sizeof(int) * (lvl->width + 1))) == NULL)
+    if ((lvl->map[i] = bunny_malloc(sizeof(int) *
+				    (lvl->width + 1))) == NULL)
       return (4);
   return (0);
 }
@@ -95,7 +103,7 @@ char		mal_tablvl(t_param *arg)
   char		*name;
   int		i;
 
-  if ((arg->lvl = malloc(sizeof(t_lvl) * (arg->nblvl + 1))) == NULL)
+  if ((arg->lvl = bunny_malloc(sizeof(t_lvl) * (arg->nblvl + 1))) == NULL)
     return (1);
   i = -1;
   while (++i < arg->nblvl &&

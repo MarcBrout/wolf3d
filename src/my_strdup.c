@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Wed Oct  7 10:24:46 2015 marc brout
-** Last update Fri Dec 18 11:39:02 2015 marc brout
+** Last update Fri Dec 25 02:02:08 2015 marc brout
 */
 
 #include "wolf.h"
@@ -16,7 +16,7 @@ char	*my_strdup(char *src)
   char	*dest;
 
   i = 0;
-  if ((dest = malloc(sizeof(char) * my_strlen(src) + 1)) == NULL)
+  if ((dest = bunny_malloc(sizeof(char) * my_strlen(src) + 1)) == NULL)
     return (NULL);
   while (src[i])
     {
