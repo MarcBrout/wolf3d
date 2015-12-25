@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Fri Dec 25 02:01:46 2015 marc brout
+** Last update Fri Dec 25 02:07:34 2015 marc brout
 */
 
 #include "wolf.h"
@@ -17,7 +17,7 @@ void		get_player(t_param *arg, t_lvl *lvl)
   lvl->playery = my_getnbr(FLD(arg->ini, lvl->name, "start_position", 1));
   lvl->plangle = (my_getnbr(FLD(arg->ini, lvl->name, "start_position", 2))
 		  % 360);
-  if (!lvl->playerx || !lvl->playery || lvl->playerx >= lvl->width || 
+  if (!lvl->playerx || !lvl->playery || lvl->playerx >= lvl->width ||
       lvl->playery >= lvl->height)
     {
       lvl->playerx = 0;
